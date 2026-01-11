@@ -1,0 +1,77 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+dist/
+eggs/
+*.egg-info/
+pip-wheel-metadata/
+
+# Virtual environments
+qkd_env/
+venv/
+env/
+.venv/
+
+# Pytest
+.pytest_cache/
+
+# Coverage
+.coverage
+coverage.xml
+htmlcov/
+
+# MyPy
+.mypy_cache/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / reports
+test-output/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# OneDrive temporary files
+~$*
+
+# Jupyter
+.ipynb_checkpoints
+
+# dotenv
+.env
+.env.*
+
+# Logs
+*.log
+
+# Simulation/results (generated output)
+results/
+simulations/*.csv
+simulations/*.txt
+simulation_report.txt
+simulation_*.csv
+
+# Python packaging
+*.egg
+
+# Misc
+*.pyc
+*.pyo
+*.pyd

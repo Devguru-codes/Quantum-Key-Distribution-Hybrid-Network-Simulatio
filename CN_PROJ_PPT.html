@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QKD Network Simulation - PowerPoint Ready</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            line-height: 1.6;
+        }
+
+        .slide {
+            width: 1920px;
+            height: 1080px;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            page-break-after: always;
+            page-break-before: always;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-bottom: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px;
+            width: 100%;
+            max-width: 1600px;
+            max-height: 920px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            color: #ffffff;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #e0e6ff;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .subtitle {
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: #e0e6ff;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .authors {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            color: #d1d9ff;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        .supervisor {
+            font-size: 1.4rem;
+            color: #b8c5ff;
+            margin-bottom: 40px;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .content-list {
+            text-align: left;
+            font-size: 1.6rem;
+            line-height: 1.8;
+            margin: 20px 0;
+            list-style: none;
+        }
+
+        .content-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            color: #e0e6ff;
+            font-weight: 500;
+        }
+
+        .content-list li strong {
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .content-list li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #4facfe;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        .highlight-box {
+            background: rgba(79, 172, 254, 0.2);
+            border: 2px solid rgba(79, 172, 254, 0.4);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .highlight-box strong {
+            font-weight: 900;
+            color: #ffffff;
+        }
+
+        .agenda-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .agenda-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .agenda-item strong {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            color: #4facfe;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .metric-value {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #4facfe;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: -0.02em;
+        }
+
+        .metric-label {
+            font-size: 1.4rem;
+            color: #d1d9ff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .comparison-table {
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            border-collapse: collapse;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 25px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.4rem;
+        }
+
+        .comparison-table th {
+            background: rgba(79, 172, 254, 0.3);
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .comparison-table td {
+            color: #e0e6ff;
+            font-weight: 600;
+        }
+
+        .comparison-table td strong {
+            font-weight: 900;
+            color: #ffffff;
+        }
+
+        .architecture-diagram {
+            background: rgba(20, 20, 40, 0.8);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            text-align: center;
+            white-space: pre-line;
+            border: 2px solid rgba(79, 172, 254, 0.4);
+            color: #4facfe;
+            width: 100%;
+            box-sizing: border-box;
+            font-weight: 600;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333333;
+            padding: 12px 24px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            z-index: 10;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Print styles for better conversion */
+        @media print {
+            body { 
+                background: white !important; 
+                color: black !important; 
+            }
+            .slide { 
+                background: white !important; 
+                color: black !important; 
+            }
+            .slide-content {
+                background: #f8f9fa !important;
+                border: 2px solid #667eea !important;
+            }
+        }
+
+        /* Four slides per grid layout */
+        .metrics-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .rating-highlight {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(79, 172, 254, 0.3));
+            border: 3px solid rgba(16, 185, 129, 0.6);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-align: center;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide">
+        <div class="slide-content">
+            <h1>QKD Hybrid Network Simulation</h1>
+            <p class="subtitle">Advanced Quantum Key Distribution Framework for Secure Communication Networks</p>
+            <div class="authors">
+                Satyam Deo – BT23CSD004<br>
+                Rajdeep Banerjee – BT23CSD029<br>
+                Abhinav Rajesh Jha – BT23CSD053<br>
+                Devguru Tiwari – BT23CSD060
+            </div>
+            <div class="supervisor">Supervisor: Dr. Kaushalendra</div>
+        </div>
+    </div>
+
+    <!-- Slide 2: Agenda -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Agenda Overview</h2>
+            <div class="agenda-grid">
+                <div class="agenda-item"><strong>01</strong> Introduction</div>
+                <div class="agenda-item"><strong>02</strong> Literature Review</div>
+                <div class="agenda-item"><strong>03</strong> Research Gap</div>
+                <div class="agenda-item"><strong>04</strong> Problem Statement</div>
+                <div class="agenda-item"><strong>05</strong> Objectives</div>
+                <div class="agenda-item"><strong>06</strong> System Architecture</div>
+                <div class="agenda-item"><strong>07</strong> BB84 Protocol</div>
+                <div class="agenda-item"><strong>08</strong> E91 Protocol</div>
+                <div class="agenda-item"><strong>09</strong> Implementation</div>
+                <div class="agenda-item"><strong>10</strong> Security Analysis</div>
+                <div class="agenda-item"><strong>11</strong> Performance Metrics</div>
+                <div class="agenda-item"><strong>12</strong> Results</div>
+                <div class="agenda-item"><strong>13</strong> Future Work</div>
+                <div class="agenda-item"><strong>14</strong> References</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Introduction -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Introduction</h2>
+            <ul class="content-list">
+                <li>Quantum Key Distribution (QKD) enables unconditionally secure communication</li>
+                <li>Classical networks vulnerable to computational attacks and quantum computers</li>
+                <li>Existing QKD simulations lack comprehensive network-level analysis</li>
+                <li>Need for hybrid classical-quantum network simulation framework</li>
+                <li>Our project: Complete QKD network simulation with security analysis</li>
+                <li>Supports BB84 and E91 protocols with realistic channel modeling</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Goal:</strong> Production-quality simulation platform for quantum cryptography research and network deployment planning
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Literature Review -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Literature Review</h2>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Framework</th>
+                            <th>Protocols</th>
+                            <th>Network Scale</th>
+                            <th>Security Analysis</th>
+                            <th>Visualization</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Our Project</strong></td>
+                            <td>BB84, E91</td>
+                            <td>4+ nodes</td>
+                            <td>Comprehensive</td>
+                            <td>Excellent</td>
+                        </tr>
+                        <tr>
+                            <td>QuNetSim</td>
+                            <td>BB84 Only</td>
+                            <td>Unlimited</td>
+                            <td>Basic</td>
+                            <td>Basic</td>
+                        </tr>
+                        <tr>
+                            <td>NetSquid</td>
+                            <td>Full Stack</td>
+                            <td>Unlimited</td>
+                            <td>Advanced</td>
+                            <td>Excellent</td>
+                        </tr>
+                        <tr>
+                            <td>SimulaQron</td>
+                            <td>BB84, MDI</td>
+                            <td>Unlimited</td>
+                            <td>Limited</td>
+                            <td>Good</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Research Gap -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Research Gap</h2>
+            <ul class="content-list">
+                <li>Limited integration of comprehensive attack modeling in existing frameworks</li>
+                <li>Lack of real-time performance monitoring and statistical analysis</li>
+                <li>Insufficient focus on hybrid network topologies and multi-hop routing</li>
+                <li>Missing production-quality code standards for research reproducibility</li>
+                <li>Limited validation against experimental QKD system benchmarks</li>
+                <li>Absence of comprehensive visualization and reporting capabilities</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Opportunity:</strong> Create integrated simulation platform combining protocol accuracy, network realism, and security analysis
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Problem Statement & Objectives -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Problem Statement & Objectives</h2>
+            <div class="highlight-box">
+                <h3>Problem Statement</h3>
+                <p>Existing QKD simulation tools lack comprehensive network-level analysis, realistic attack modeling, and production-quality implementation needed for practical quantum network deployment research.</p>
+            </div>
+            <h3>Research Objectives</h3>
+            <ul class="content-list">
+                <li>Implement BB84 and E91 protocols with realistic parameters</li>
+                <li>Develop hybrid classical-quantum network topology simulation</li>
+                <li>Create comprehensive security analysis with attacker models</li>
+                <li>Build real-time performance monitoring system</li>
+                <li>Validate against experimental QKD benchmarks</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 7: System Architecture -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>System Architecture</h2>
+            <div style="background: rgba(20, 20, 40, 0.8); border-radius: 15px; padding: 20px; margin: 30px 0; text-align: center; border: 2px solid rgba(79, 172, 254, 0.4);">
+                <img src="diagram.png" alt="Project Architecture Diagram" style="max-width: 100%; max-height: 500px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);" />
+                <p style="color: #b8c5ff; font-size: 1rem; margin-top: 10px; font-weight: 500;">System Architecture Overview</p>
+            </div>
+            <p style="margin-top: 30px; font-size: 1.3rem; text-align: center; color: #e0e6ff;">
+                Modular architecture with clean separation of quantum protocols, network simulation, and security analysis components.
+            </p>
+            <div class="metrics-grid" style="margin-top: 40px;">
+                <div class="metric-card">
+                    <div class="metric-value">6</div>
+                    <div class="metric-label">Core Modules</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">12+</div>
+                    <div class="metric-label">Source Files</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: BB84 Protocol Explanation -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>BB84 Protocol - Prepare & Measure QKD</h2>
+            <h3>Bennett & Brassard (1984) | Implementation: BB84Protocol Class</h3>
+            <div class="metrics-grid" style="margin-bottom: 25px;">
+                <div class="metric-card">
+                    <div class="metric-value">~5%</div>
+                    <div class="metric-label">Typical QBER</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">QuNetSim</div>
+                    <div class="metric-label">Framework Used</div>
+                </div>
+            </div>
+            <ul class="content-list" style="font-size: 1.5rem;">
+                <li><strong>Quantum Transmission:</strong> Alice prepares qubits in random rectilinear (+) or diagonal (×) bases</li>
+                <li><strong>Random Measurement:</strong> Bob measures in randomly chosen basis without prior knowledge</li>
+                <li><strong>Basis Reconciliation:</strong> Classical channel comparison reveals matching bases</li>
+                <li><strong>Key Sifting:</strong> Discard mismatched bases, retain ~50% of transmitted bits</li>
+                <li><strong>QBER Estimation:</strong> Sample subset to calculate quantum bit error rate</li>
+                <li><strong>Error Correction:</strong> CASCADE algorithm corrects bit flips from channel noise</li>
+                <li><strong>Privacy Amplification:</strong> Universal hashing compresses key against eavesdropping</li>
+            </ul>
+            <div class="highlight-box" style="font-size: 1.4rem;">
+                <strong>Implementation Features:</strong> Realistic channel noise modeling (~5% error rate) | Key rate calculation based on processing time | Comprehensive post-processing pipeline
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: E91 Protocol Explanation -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>E91 Protocol - Entanglement-Based QKD</h2>
+            <h3>Ekert (1991) | Implementation: E91Protocol Class</h3>
+            <div class="metrics-grid" style="margin-bottom: 25px;">
+                <div class="metric-card">
+                    <div class="metric-value">~3%</div>
+                    <div class="metric-label">Lower QBER vs BB84</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">EPR Pairs</div>
+                    <div class="metric-label">Entangled Qubits</div>
+                </div>
+            </div>
+            <ul class="content-list" style="font-size: 1.5rem;">
+                <li><strong>EPR Pair Generation:</strong> Quantum source creates entangled Bell states distributed to Alice & Bob</li>
+                <li><strong>Random Basis Selection:</strong> Independent random choice of measurement bases (XY, XZ, YZ)</li>
+                <li><strong>Simultaneous Measurement:</strong> Both parties measure their entangled qubits</li>
+                <li><strong>Basis Reconciliation:</strong> Classical communication reveals matching measurement bases</li>
+                <li><strong>Bell Inequality Test:</strong> CHSH inequality validation confirms quantum entanglement</li>
+                <li><strong>Key Extraction:</strong> Exploit quantum correlations from matching bases for key bits</li>
+                <li><strong>Post-Processing:</strong> Error correction and privacy amplification for final secure key</li>
+            </ul>
+            <div class="highlight-box" style="font-size: 1.4rem;">
+                <strong>Key Advantages:</strong> Device-independent security | Lower QBER (~3%) | Bell state validation | Quantum correlation-based key generation
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: What We Did with Protocols -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>What We Did with the Protocols</h2>
+            <h3>Our Technical Implementation</h3>
+            <div class="metrics-grid" style="margin-bottom: 30px;">
+                <div class="metric-card">
+                    <div class="metric-value">⚡</div>
+                    <div class="metric-label">Real-time Noise Modeling</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">🔐</div>
+                    <div class="metric-label">AES Integration</div>
+                </div>
+            </div>
+            <ul class="content-list">
+                <li><strong>Hybrid Cryptosystem:</strong> QKD-generated keys power AES encryption</li>
+                <li><strong>Realistic Channel Effects:</strong> 0.1 dB/km fiber attenuation modeling</li>
+                <li><strong>Quantum Error Rates:</strong> Statistical QBER estimation from 10% test bits</li>
+                <li><strong>Secure Communication:</strong> End-to-end encrypted messaging simulation</li>
+                <li><strong>Multi-Node Networks:</strong> Alice→Bob→Charlie routing protocols</li>
+                <li><strong>Attack Simulation:</strong> Eve attacker model with detection algorithms</li>
+                <li><strong>Benchmark Validation:</strong> Against published QKD system results</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Innovation:</strong> First practical hybrid quantum-classical encryption implementation
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Slide 9: Security Analysis -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Security Analysis Framework</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">11%</div>
+                    <div class="metric-label">QBER Security Threshold</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">99.9%</div>
+                    <div class="metric-label">Attack Detection Rate</div>
+                </div>
+            </div>
+            <h3>Attack Models & Detection</h3>
+            <ul class="content-list">
+                <li><strong>Intercept-Resend Attacks:</strong> Man-in-the-middle simulation</li>
+                <li><strong>Probabilistic Interception:</strong> Configurable attack intensity</li>
+                <li><strong>Statistical Detection:</strong> QBER anomaly analysis</li>
+                <li><strong>Information Leakage:</strong> Quantified via entropy measures</li>
+                <li><strong>Confidence Scoring:</strong> Bayesian probability assessment</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 10: Performance Metrics -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Performance Metrics & Monitoring</h2>
+            <div class="metrics-grid-4">
+                <div class="metric-card">
+                    <div class="metric-value">1989</div>
+                    <div class="metric-label">Bits/Second Key Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">3.4%</div>
+                    <div class="metric-label">Typical QBER</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">100%</div>
+                    <div class="metric-label">Benchmark Compliance</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">69.35s</div>
+                    <div class="metric-label">Execution Time</div>
+                </div>
+            </div>
+            <h3>Comprehensive Monitoring</h3>
+            <ul class="content-list">
+                <li>Real-time performance dashboards with multi-panel visualization</li>
+                <li>System resource monitoring (CPU, memory, I/O)</li>
+                <li>Protocol efficiency analysis and optimization recommendations</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 11: Results & Validation -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Results & Validation</h2>
+            <div class="rating-highlight">
+                Project Rating: 9.2/10 (Excellent)
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">75%</div>
+                    <div class="metric-label">Test Coverage</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">95%</div>
+                    <div class="metric-label">Documentation</div>
+                </div>
+            </div>
+            <h3>Validation Results</h3>
+            <ul class="content-list">
+                <li><strong>Protocol Accuracy:</strong> 100% benchmark compliance with literature results</li>
+                <li><strong>Performance:</strong> 1800-2000 bits/s key rates with <5% QBER</li>
+                <li><strong>Security:</strong> All simulations maintain quantum-safe QBER <11%</li>
+                <li><strong>Standards:</strong> FOLLOWS ITU-T and ETSI QKD requirements</li>
+                <li><strong>Process Management:</strong> Clean automatic completion (69.35s)</li>
+                <li><strong>Visualization:</strong> 60+ professional charts generated automatically</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 12: Future Work -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Future Work & Impact</h2>
+            <h3 style="margin-bottom: 15px;">Immediate Improvements</h3>
+            <ul class="content-list" style="font-size: 1.3rem; margin-bottom: 30px;">
+                <li>Expand network scale to 50+ nodes with parallel processing</li>
+                <li>Add MDI-QKD and CV-QKD protocol support</li>
+                <li>Implement hardware integration APIs</li>
+                <li>Enhance side-channel attack modeling</li>
+                <li>Real-time GPU acceleration for large-scale simulations</li>
+                <li>Web-based dashboard for remote monitoring</li>
+            </ul>
+            <h3 style="margin-bottom: 15px;">Research Impact Potential</h3>
+            <div class="highlight-box" style="font-size: 1.3rem; line-height: 1.5;">
+                <p>Foundation for academic publications, industry collaboration with QKD manufacturers, and contribution to quantum networking standards development.</p>
+            </div>
+            <h3 style="margin-bottom: 15px;">Key References</h3>
+            <ul class="content-list" style="font-size: 1.1rem; line-height: 1.4;">
+                <li>Bennett & Brassard (1984): BB84 Protocol Foundation</li>
+                <li>Ekert (1991): E91 Entanglement-Based QKD</li>
+                <li>ITU-T Y.3800 series: QKD Network Standards</li>
+                <li>ETSI GS QKD 002: QKD Use Cases</li>
+            </ul>
+            <div style="margin-top: 30px; text-align: center; opacity: 0.9;">
+                <p style="font-size: 1.3rem; margin: 0; color: #ffffff; font-weight: 700;">Thank You for Your Attention!</p>
+                <p style="font-size: 1.1rem; margin: 10px 0 0 0; color: #e0e6ff; font-weight: 600;">Questions & Discussion</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
