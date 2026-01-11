@@ -1,0 +1,66 @@
+# Default configuration parameters for QKD Hybrid Network Simulation
+simulation:
+  random_seed: 42
+  num_runs: 10
+  verbose: true
+
+quantum_channel:
+  loss_rate_db_per_km: 0.1  # dB/km
+  distance_km: 20.0
+  quantum_error_rate: 0.05
+  photon_pulse_rate: 1000000  # photons per second
+
+qkd_protocol:
+  key_length_bits: 256
+  block_size: 1024
+  error_correction: cascade
+  privacy_amplification: universal_hash
+  reconciliation_efficiency: 1.1
+
+network_topology:
+  nodes:
+    - name: Alice
+      type: source
+    - name: Bob
+      type: destination
+    - name: Charlie
+      type: intermediate
+    - name: Repeater
+      type: repeater
+  channels:
+    - from: Alice
+      to: Repeater
+      distance: 10.0
+    - from: Repeater
+      to: Charlie
+      distance: 10.0
+    - from: Charlie
+      to: Bob
+      distance: 10.0
+
+attacker:
+  eve_present: true
+  interception_rate: 0.1
+  detection_threshold: 0.11
+  false_positive_rate: 0.01
+
+classical_crypto:
+  algorithm: AES
+  mode: GCM
+  key_size: 256
+
+performance:
+  enable_profiling: true
+  log_level: INFO
+  export_csv: true
+
+benchmarks:
+  bb84_standard:
+    expected_qber: 0.03  # More realistic for simulation
+    expected_key_rate: 1500  # Accommodate higher calculated rates
+  e91_standard:
+    expected_qber: 0.01  # Even lower for E91 (better entanglement)
+    expected_key_rate: 1200  # Realistic for entanglement-based protocol
+
+qkd_protocol:
+  realistic_bit_rate: 4000  # bits per second for key rate calculation
