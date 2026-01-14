@@ -518,16 +518,15 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- Quantum Computing Lab, University of Technology
-- Contributors to QuNetSim and NetSquid projects
+- Quantum Computing Lab, IIIT NAGPUR
+- Contributors to QuNetSim and NetSquid projects - Devguru Tiwari
 - Research community for QKD protocol development
 
 ## Contact
 
 For questions or contributions:
-- Email: researcher@university.edu
-- GitHub Issues: https://github.com/username/qkd-simulation/issues
-- Documentation: https://qkd-simulation.readthedocs.io/
+- Email: bt23csd060@iiitn.ac.in
+- GitHub Issues: https://github.com/Devguru-codes/Quantum-Key-Distribution-Hybrid-Network-Simulation/issue
 
 ---
 
